@@ -1,0 +1,24 @@
+name       : rethinkdb
+version    : 2.3.5
+release    : 1
+source     :
+    - https://github.com/rethinkdb/rethinkdb/archive/v2.3.5.tar.gz : 2bd97303c127885cb7a424a2f1fc3eab62a1afb0b7e5503653d988150151d320
+license    : AGPL-3.0
+component  : database
+summary    : The open-source database for the realtime web.
+description: |
+    The open-source database for the realtime web.
+builddeps  :
+    - pkgconfig(jemalloc)
+    - pkgconfig(libcrypto)
+    - pkgconfig(libcurl)
+    - pkgconfig(protobuf)
+setup      : |
+    ./configure --prefix=/usr \
+        --allow-fetch \
+        --localstatedir=/var \
+        --sysconfdir=/etc
+build      : |
+    %make
+install    : |
+    %make_install
